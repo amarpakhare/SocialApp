@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/tabs/Home';
 import Profile from '../screens/tabs/Profile';
-
+import Login from '../screens/auth/Login';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 export type RootTabParamList = {
   Home: {
     title: string;
@@ -15,8 +16,16 @@ export type RootTabParamList = {
     tabBarIcon: () => JSX.Element;
   };
 };
+
+export type RootStackParamList = {
+  Login: {
+    title: string;
+  };
+};
+
 const Tab = createBottomTabNavigator<RootTabParamList>();
-const TabNavigation = () => {
+const Stack = createNativeStackNavigator<RootStackParamList>();
+const Navigation = () => {
   return (
     <Tab.Navigator initialRouteName="Home">
       <Tab.Screen
@@ -25,6 +34,7 @@ const TabNavigation = () => {
         options={{
           title: 'Home',
           tabBarIcon: () => <Icon name="home-outline" color="#000" size={20} />,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -35,12 +45,25 @@ const TabNavigation = () => {
           tabBarIcon: () => (
             <Icon name="person-outline" color="#000" size={20} />
           ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
+    // ) : (
+    //   <Stack.Navigator initialRouteName="Login">
+    //     <Stack.Screen
+    //       name="Login"
+    //       component={Login}
+    //       options={{
+    //         title: 'Login',
+    //         headerShown: false,
+    //       }}
+    //     />
+    //   </Stack.Navigator>
+    // );
   );
 };
 
-export default TabNavigation;
+export default Navigation;
 
 const styles = StyleSheet.create({});

@@ -3,18 +3,18 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text style={styles.smallTxt}>Home</Text>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>Home</Text>
+    </View>
   );
 };
 
 export default Home;
 
 const styles = StyleSheet.create({
-  smallTxt: {
-    color: 'red',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
